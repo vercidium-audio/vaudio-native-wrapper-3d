@@ -1,4 +1,6 @@
-﻿namespace vaudionativewrapper.managed
+﻿using System;
+
+namespace vaudionativewrapper.managed
 {
     /// <summary>A capsule (cylinder with hemispherical caps) audio primitive</summary>
     public unsafe class CapsulePrimitive : Primitive
@@ -6,6 +8,7 @@
         public CapsulePrimitive()
         {
             native = CapsulePrimitiveBindings.Create();
+            owns = true;
         }
 
         /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
@@ -39,6 +42,9 @@
         public void Destroy()
         {
             CapsulePrimitiveBindings.Destroy(native).ThrowIfError();
+            native = IntPtr.Zero;
         }
+
+        protected override string DebugInfo => $"material={material}, radius={radius}, length={length}";
     }
 }

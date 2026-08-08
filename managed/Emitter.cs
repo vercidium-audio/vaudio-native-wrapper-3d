@@ -7,6 +7,7 @@ namespace vaudionativewrapper.managed
     public unsafe class Emitter
     {
         public IntPtr native;
+        private readonly bool owns;
 
 #region Functions
         public Emitter(IntPtr native)
@@ -18,12 +19,25 @@ namespace vaudionativewrapper.managed
         public Emitter()
         {
             native = EmitterBindings.Create();
+            owns = true;
         }
 
         /// <summary>Free the emitter. Throws if the emitter is still added to a world.</summary>
         public void Destroy()
         {
             EmitterBindings.Destroy(native).ThrowIfError();
+            native = IntPtr.Zero;
+        }
+
+        ~Emitter()
+        {
+            if (owns && native != IntPtr.Zero)
+            {
+                string name;
+                try { name = Name; } catch { name = "<unknown>"; }
+
+                LogSettings.Warn($"Emitter '{name}' was garbage collected without calling Destroy() first.");
+            }
         }
 
         /// <summary>Adds an emitter to this emitter's target list</summary>

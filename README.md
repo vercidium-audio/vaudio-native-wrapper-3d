@@ -2,7 +2,7 @@
 
 This is a .NET Standard 2.1 wrapper for the Vercidium Audio C SDK.
 
-This repository requires Vercidium Audio v1.6.2. Download it from [vercidium.com](https://vercidium.com)
+This repository requires Vercidium Audio v1.6.3. Download it from [vercidium.com](https://vercidium.com)
 
 > Please note that the Vercidium Audio SDK is not free for commercial use. See [vercidium.com/eula](https://vercidium.com/eula)
 

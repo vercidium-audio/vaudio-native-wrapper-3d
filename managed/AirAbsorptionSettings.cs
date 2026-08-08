@@ -7,6 +7,7 @@ namespace vaudionativewrapper.managed
     public class AirAbsorptionSettings
     {
         public IntPtr native;
+        private readonly bool owns;
 
         // Native holds a raw function pointer into these delegates, invoked from native worker
         // threads that the CLR doesn't scan the same way as managed call stacks. A managed field
@@ -19,6 +20,7 @@ namespace vaudionativewrapper.managed
         public AirAbsorptionSettings()
         {
             native = AirAbsorptionSettingsBindings.Create();
+            owns = true;
         }
 
         public AirAbsorptionSettings(IntPtr native)
@@ -49,7 +51,18 @@ namespace vaudionativewrapper.managed
 
         public VAResult Validate() => AirAbsorptionSettingsBindings.Validate(native);
 
-        public VAResult Destroy() => AirAbsorptionSettingsBindings.Destroy(native);
+        public VAResult Destroy()
+        {
+            var result = AirAbsorptionSettingsBindings.Destroy(native);
+            native = IntPtr.Zero;
+            return result;
+        }
+
+        ~AirAbsorptionSettings()
+        {
+            if (owns && native != IntPtr.Zero)
+                LogSettings.Warn("AirAbsorptionSettings was garbage collected without calling Destroy() first.");
+        }
 
         public AirAbsorptionFormulaDelegate SetCustomFormulaLF(Func<float, float> value)
         {
