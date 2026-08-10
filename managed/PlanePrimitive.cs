@@ -1,3 +1,5 @@
+using System;
+
 namespace vaudionativewrapper.managed
 {
     /// <summary>A flat plane audio primitive</summary>
@@ -6,6 +8,7 @@ namespace vaudionativewrapper.managed
         public PlanePrimitive()
         {
             native = PlanePrimitiveBindings.Create();
+            owns = true;
         }
 
         /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
@@ -39,6 +42,9 @@ namespace vaudionativewrapper.managed
         public void Destroy()
         {
             PlanePrimitiveBindings.Destroy(native).ThrowIfError();
+            native = IntPtr.Zero;
         }
+
+        protected override string DebugInfo => $"material={material}, width={width}, height={height}";
     }
 }

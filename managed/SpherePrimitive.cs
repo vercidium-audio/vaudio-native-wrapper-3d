@@ -1,4 +1,6 @@
-﻿namespace vaudionativewrapper.managed
+﻿using System;
+
+namespace vaudionativewrapper.managed
 {
     /// <summary>A spherical audio primitive</summary>
     public class SpherePrimitive : Primitive
@@ -6,6 +8,7 @@
         public SpherePrimitive()
         {
             native = SpherePrimitiveBindings.Create();
+            owns = true;
         }
 
         /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
@@ -32,6 +35,9 @@
         public void Destroy()
         {
             SpherePrimitiveBindings.Destroy(native).ThrowIfError();
+            native = IntPtr.Zero;
         }
+
+        protected override string DebugInfo => $"material={material}, center={center}, radius={radius}";
     }
 }

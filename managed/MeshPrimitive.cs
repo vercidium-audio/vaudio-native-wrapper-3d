@@ -18,6 +18,7 @@ namespace vaudionativewrapper.managed
             }
 
             native = outPrimitive;
+            owns = true;
         }
 
         /// <summary>Create a mesh primitive from an array of vertices</summary>
@@ -31,6 +32,7 @@ namespace vaudionativewrapper.managed
             }
 
             native = outPrimitive;
+            owns = true;
         }
 
         /// <summary>Create a mesh primitive that shares geometry with a Mesh. The BVH is built once in the Mesh and reused by every instance.</summary>
@@ -40,6 +42,7 @@ namespace vaudionativewrapper.managed
             MeshPrimitiveBindings.CreatePrimitiveFromMesh(material, mesh.native, ref transform, &outPrimitive).ThrowIfError();
 
             native = outPrimitive;
+            owns = true;
         }
 
         /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
@@ -66,6 +69,9 @@ namespace vaudionativewrapper.managed
         public void Destroy()
         {
             MeshPrimitiveBindings.Destroy(native).ThrowIfError();
+            native = IntPtr.Zero;
         }
+
+        protected override string DebugInfo => $"material={material}, Supports3DPermeation={Supports3DPermeation}";
     }
 }

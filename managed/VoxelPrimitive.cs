@@ -15,6 +15,7 @@ namespace vaudionativewrapper.managed
             this.depth = depth;
 
             native = VoxelPrimitiveBindings.Create(width, height, depth);
+            owns = true;
         }
 
         /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
@@ -48,6 +49,12 @@ namespace vaudionativewrapper.managed
         /// <summary>Call this after editing voxel data</summary>
         public void SetDataDirty() => VoxelPrimitiveBindings.SetDataDirty(native).ThrowIfError();
 
-        public void Destroy() => VoxelPrimitiveBindings.Destroy(native).ThrowIfError();
+        public void Destroy()
+        {
+            VoxelPrimitiveBindings.Destroy(native).ThrowIfError();
+            native = System.IntPtr.Zero;
+        }
+
+        protected override string DebugInfo => $"material={material}, width={width}, height={height}, depth={depth}, scale={scale}";
     }
 }

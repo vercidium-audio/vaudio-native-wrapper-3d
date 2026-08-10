@@ -4,5 +4,10 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Platforms>AnyCPU</Platforms>
         <Configurations>Debug;Release;Production</Configurations>
+
+        <Version>1.6.3</Version>
+        <AssemblyVersion>1.6.3</AssemblyVersion>
+        <FileVersion>1.6.3</FileVersion>
+        <InformationalVersion>1.6.3</InformationalVersion>
     </PropertyGroup>
 </Project>

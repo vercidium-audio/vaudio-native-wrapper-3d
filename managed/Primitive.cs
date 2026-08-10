@@ -6,6 +6,7 @@ namespace vaudionativewrapper.managed
     public class Primitive
     {
         public IntPtr native;
+        protected bool owns;
 
         public Primitive(IntPtr native)
         {
@@ -13,5 +14,14 @@ namespace vaudionativewrapper.managed
         }
 
         public Primitive() { }
+
+        /// <summary>Unique properties logged in the ~Primitive finaliser to identify which primitive was leaked</summary>
+        protected virtual string DebugInfo => "";
+
+        ~Primitive()
+        {
+            if (owns && native != IntPtr.Zero)
+                LogSettings.Warn($"{GetType().Name} was garbage collected without calling Destroy() first. {DebugInfo}");
+        }
     }
 }

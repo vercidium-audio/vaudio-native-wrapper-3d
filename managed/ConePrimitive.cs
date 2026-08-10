@@ -1,4 +1,6 @@
-﻿namespace vaudionativewrapper.managed
+﻿using System;
+
+namespace vaudionativewrapper.managed
 {
     /// <summary>A circular cone audio primitive</summary>
     public unsafe class ConePrimitive : Primitive
@@ -6,6 +8,7 @@
         public ConePrimitive()
         {
             native = ConePrimitiveBindings.Create();
+            owns = true;
         }
 
         /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
@@ -39,6 +42,9 @@
         public void Destroy()
         {
             ConePrimitiveBindings.Destroy(native).ThrowIfError();
+            native = IntPtr.Zero;
         }
+
+        protected override string DebugInfo => $"material={material}, radius={radius}, height={height}";
     }
 }

@@ -16,7 +16,7 @@ namespace vaudionativewrapper
     public delegate void OnRemovedFn();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public unsafe delegate void VisualisationCallbackFn(VisualisationData* data, int count);
+    public unsafe delegate void VisualisationCallbackFn(IntPtr emitter, VisualisationData* data, int count);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate float GainFormulaDelegate(bool lowFrequency, int occlusionRayCount, int permeationRayCount, int permeationBounceCount, float occlusionEnergy, float permeationEnergy);
