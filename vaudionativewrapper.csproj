@@ -10,4 +10,10 @@
         <FileVersion>1.7.0</FileVersion>
         <InformationalVersion>1.7.0</InformationalVersion>
     </PropertyGroup>
+
+    <!-- common is a shared source submodule, not a referenced assembly, used by both this project and vaudio-native-wrapper-2d -->
+    <ItemGroup>
+        <Compile Remove="common\**\*.cs" />
+        <Compile Include="common\**\*.cs" Exclude="common\obj\**;common\bin\**" LinkBase="common" />
+    </ItemGroup>
 </Project>
