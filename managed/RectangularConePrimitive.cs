@@ -46,11 +46,7 @@ namespace vaudionativewrapper.managed
             set => RectangularConePrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            RectangularConePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => RectangularConePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, width={width}, length={length}, height={height}";
     }

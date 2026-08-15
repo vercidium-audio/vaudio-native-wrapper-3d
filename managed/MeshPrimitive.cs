@@ -66,11 +66,7 @@ namespace vaudionativewrapper.managed
             set => MeshPrimitiveBindings.SetSupports3DPermeation(native, value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            MeshPrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => MeshPrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, Supports3DPermeation={Supports3DPermeation}";
     }

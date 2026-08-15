@@ -39,11 +39,7 @@ namespace vaudionativewrapper.managed
             set => CapsulePrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            CapsulePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => CapsulePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, radius={radius}, length={length}";
     }

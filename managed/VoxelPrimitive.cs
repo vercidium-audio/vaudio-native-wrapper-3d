@@ -49,11 +49,7 @@ namespace vaudionativewrapper.managed
         /// <summary>Call this after editing voxel data</summary>
         public void SetDataDirty() => VoxelPrimitiveBindings.SetDataDirty(native).ThrowIfError();
 
-        public void Destroy()
-        {
-            VoxelPrimitiveBindings.Destroy(native).ThrowIfError();
-            native = System.IntPtr.Zero;
-        }
+        protected override vaudionativewrapper.VAResult DestroyNative(System.IntPtr native) => VoxelPrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, width={width}, height={height}, depth={depth}, scale={scale}";
     }

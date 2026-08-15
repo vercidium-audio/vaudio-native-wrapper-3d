@@ -39,11 +39,7 @@ namespace vaudionativewrapper.managed
             set => TrianglePrimitiveBindings.SetPosition2(native, value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            TrianglePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => TrianglePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, position0={position0}, position1={position1}, position2={position2}";
     }

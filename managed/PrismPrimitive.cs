@@ -32,11 +32,7 @@ namespace vaudionativewrapper.managed
             set => PrismPrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            PrismPrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => PrismPrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, size={size}";
     }

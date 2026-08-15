@@ -32,11 +32,7 @@ namespace vaudionativewrapper.managed
             set => HalfSpherePrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            HalfSpherePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => HalfSpherePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, radius={radius}";
     }

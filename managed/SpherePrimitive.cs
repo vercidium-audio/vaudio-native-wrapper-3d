@@ -32,11 +32,7 @@ namespace vaudionativewrapper.managed
             set => SpherePrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            SpherePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => SpherePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, center={center}, radius={radius}";
     }
