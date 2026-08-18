@@ -18,13 +18,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => VoxelPrimitiveBindings.GetMaterial(native);
-            set => VoxelPrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Scale of the voxels</summary>
         public float scale
         {

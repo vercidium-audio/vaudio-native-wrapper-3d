@@ -11,13 +11,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => CapsulePrimitiveBindings.GetMaterial(native);
-            set => CapsulePrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Radius of the capsule</summary>
         public float radius
         {

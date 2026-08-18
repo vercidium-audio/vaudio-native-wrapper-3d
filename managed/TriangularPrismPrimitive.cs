@@ -11,13 +11,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => TriangularPrismPrimitiveBindings.GetMaterial(native);
-            set => TriangularPrismPrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Circumradius of the triangular cross-section</summary>
         public float radius
         {

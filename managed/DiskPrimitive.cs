@@ -5,17 +5,11 @@ namespace vaudionativewrapper.managed
     /// <summary>A circular disk audio primitive</summary>
     public unsafe class DiskPrimitive : Primitive
     {
+        /// <summary>Create a disk primitive</summary>
         public DiskPrimitive()
         {
             native = DiskPrimitiveBindings.Create();
             owns = true;
-        }
-
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => DiskPrimitiveBindings.GetMaterial(native);
-            set => DiskPrimitiveBindings.SetMaterial(native, value).ThrowIfError();
         }
 
         /// <summary>Radius of the disk</summary>

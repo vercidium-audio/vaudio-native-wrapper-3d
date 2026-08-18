@@ -45,13 +45,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => MeshPrimitiveBindings.GetMaterial(native);
-            set => MeshPrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Can contain scale, rotation and translation components</summary>
         public Matrix transform
         {
@@ -59,15 +52,15 @@ namespace vaudionativewrapper.managed
             set => MeshPrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        /// <summary>If this is a watertight mesh, permeation rays will lose energy based on how far the ray travels through this mesh. If not, set this field to false and permeation rays will lose a flat percentage of energy when they touch this mesh (controlled by PlaneTransmissionLF and PlaneTransmissionHF).</summary>
-        public bool Supports3DPermeation
+        /// <summary>Whether rays lose a flat percentage of energy (FlatTransmissionLF and FlatTransmissionHF) the moment they touch this primitive, instead of calculating how long the ray spent inside it. Defaults to false (depth-based transmission using TransmissionLF and TransmissionHF). Zero-thickness primitives (e.g. DiskPrimitive, PlanePrimitive, TrianglePrimitive, LinePrimitive) have no meaningful interior to travel through, so they force this to true and throw if set to false.</summary>
+        public bool UseFlatTransmission
         {
-            get => MeshPrimitiveBindings.GetSupports3DPermeation(native);
-            set => MeshPrimitiveBindings.SetSupports3DPermeation(native, value).ThrowIfError();
+            get => MeshPrimitiveBindings.GetUseFlatTransmission(native);
+            set => MeshPrimitiveBindings.SetUseFlatTransmission(native, value).ThrowIfError();
         }
 
         protected override VAResult DestroyNative(IntPtr native) => MeshPrimitiveBindings.Destroy(native);
 
-        protected override string DebugInfo => $"material={material}, Supports3DPermeation={Supports3DPermeation}";
+        protected override string DebugInfo => $"material={material}, UseFlatTransmission={UseFlatTransmission}";
     }
 }
