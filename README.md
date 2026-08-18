@@ -1,8 +1,10 @@
 # Vercidium Audio
 
-This is a .NET Standard 2.1 wrapper for the Vercidium Audio C SDK.
+This is a .NET Standard 2.1 wrapper for the 3D Vercidium Audio C SDK.
 
-This repository requires Vercidium Audio v1.7.0. Download it from [vercidium.com](https://vercidium.com)
+This repository requires:
+- Vercidium Audio v1.7.0. Download it from [vercidium.com](https://vercidium.com)
+- [vaudio-native-wrapper-common](https://github.com/vercidium-audio/vaudio-native-wrapper-common) must be cloned alongside this repository
 
 > Please note that the Vercidium Audio SDK is not free for commercial use. See [vercidium.com/eula](https://vercidium.com/eula)
 
@@ -16,10 +18,12 @@ This repository requires Vercidium Audio v1.7.0. Download it from [vercidium.com
 
 ## References
 - [Vercidum Audio documentation](https://vercidium.com/docs)
+- [vaudio-native-wrapper-2d](https://github.com/vercidium-audio/vaudio-native-wrapper-2d) is the wrapper for the 2D Vercidium Audio C SDK.
 
 ## Requirements
 
 - [Vercidium Audio SDK](https://vercidium.com)
+- [vaudio-native-wrapper-common](https://github.com/vercidium-audio/vaudio-native-wrapper-common)
 
 ## Licencing
 
