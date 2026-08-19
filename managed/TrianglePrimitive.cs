@@ -5,17 +5,11 @@ namespace vaudionativewrapper.managed
     /// <summary>A triangle primitive</summary>
     public class TrianglePrimitive : Primitive
     {
+        /// <summary>Create a triangle primitive</summary>
         public TrianglePrimitive()
         {
             native = TrianglePrimitiveBindings.Create();
             owns = true;
-        }
-
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => TrianglePrimitiveBindings.GetMaterial(native);
-            set => TrianglePrimitiveBindings.SetMaterial(native, value).ThrowIfError();
         }
 
         /// <summary>First vertex of the triangle</summary>
@@ -39,11 +33,7 @@ namespace vaudionativewrapper.managed
             set => TrianglePrimitiveBindings.SetPosition2(native, value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            TrianglePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => TrianglePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, position0={position0}, position1={position1}, position2={position2}";
     }

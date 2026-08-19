@@ -11,13 +11,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => CylinderPrimitiveBindings.GetMaterial(native);
-            set => CylinderPrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Radius of the cylinder</summary>
         public float radius
         {
@@ -39,11 +32,7 @@ namespace vaudionativewrapper.managed
             set => CylinderPrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            CylinderPrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => CylinderPrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, radius={radius}, length={length}";
     }

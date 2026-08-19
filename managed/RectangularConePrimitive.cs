@@ -11,13 +11,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => RectangularConePrimitiveBindings.GetMaterial(native);
-            set => RectangularConePrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Width of the rectangular base</summary>
         public float width
         {
@@ -46,11 +39,7 @@ namespace vaudionativewrapper.managed
             set => RectangularConePrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            RectangularConePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => RectangularConePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, width={width}, length={length}, height={height}";
     }

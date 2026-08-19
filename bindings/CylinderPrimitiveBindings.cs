@@ -26,12 +26,6 @@ namespace vaudionativewrapper
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaCylinderPrimitiveGetTransform")]
         public static extern unsafe Matrix* GetTransform(IntPtr primitive);
 
-        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaCylinderPrimitiveGetMaterial")]
-        public static extern MaterialType GetMaterial(IntPtr primitive);
-
-        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaCylinderPrimitiveSetMaterial")]
-        public static extern VAResult SetMaterial(IntPtr primitive, MaterialType material);
-
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaCylinderPrimitiveDestroy")]
         public static extern VAResult Destroy(IntPtr primitive);
     }

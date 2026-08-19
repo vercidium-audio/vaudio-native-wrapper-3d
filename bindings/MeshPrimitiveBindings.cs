@@ -17,18 +17,12 @@ namespace vaudionativewrapper
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveSetTransform")]
         public static extern VAResult SetTransform(IntPtr primitive, ref Matrix transform);
 
-        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveGetMaterial")]
-        public static extern MaterialType GetMaterial(IntPtr primitive);
-
-        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveSetMaterial")]
-        public static extern VAResult SetMaterial(IntPtr primitive, MaterialType material);
-
-        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveGetSupports3DPermeation")]
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveGetUseFlatTransmission")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool GetSupports3DPermeation(IntPtr primitive);
+        public static extern bool GetUseFlatTransmission(IntPtr primitive);
 
-        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveSetSupports3DPermeation")]
-        public static extern VAResult SetSupports3DPermeation(IntPtr primitive, bool supports3DPermeation);
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveSetUseFlatTransmission")]
+        public static extern VAResult SetUseFlatTransmission(IntPtr primitive, bool useFlatTransmission);
 
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaMeshPrimitiveCreateFromMesh")]
         public static extern unsafe VAResult CreatePrimitiveFromMesh(MaterialType material, IntPtr mesh, ref Matrix transform, IntPtr* outPrimitive);

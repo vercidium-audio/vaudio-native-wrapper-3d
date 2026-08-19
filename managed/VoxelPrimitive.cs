@@ -18,13 +18,6 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => VoxelPrimitiveBindings.GetMaterial(native);
-            set => VoxelPrimitiveBindings.SetMaterial(native, value).ThrowIfError();
-        }
-
         /// <summary>Scale of the voxels</summary>
         public float scale
         {
@@ -49,11 +42,7 @@ namespace vaudionativewrapper.managed
         /// <summary>Call this after editing voxel data</summary>
         public void SetDataDirty() => VoxelPrimitiveBindings.SetDataDirty(native).ThrowIfError();
 
-        public void Destroy()
-        {
-            VoxelPrimitiveBindings.Destroy(native).ThrowIfError();
-            native = System.IntPtr.Zero;
-        }
+        protected override vaudionativewrapper.VAResult DestroyNative(System.IntPtr native) => VoxelPrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, width={width}, height={height}, depth={depth}, scale={scale}";
     }

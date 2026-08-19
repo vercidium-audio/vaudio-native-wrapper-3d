@@ -5,17 +5,11 @@ namespace vaudionativewrapper.managed
     /// <summary>A flat plane audio primitive</summary>
     public unsafe class PlanePrimitive : Primitive
     {
+        /// <summary>Create a plane primitive</summary>
         public PlanePrimitive()
         {
             native = PlanePrimitiveBindings.Create();
             owns = true;
-        }
-
-        /// <summary>Determines the amount of energy lost when rays bounce off this primitive, permeate through it, and scatter off it</summary>
-        public MaterialType material
-        {
-            get => PlanePrimitiveBindings.GetMaterial(native);
-            set => PlanePrimitiveBindings.SetMaterial(native, value).ThrowIfError();
         }
 
         /// <summary>Width of the plane</summary>
@@ -39,11 +33,7 @@ namespace vaudionativewrapper.managed
             set => PlanePrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        public void Destroy()
-        {
-            PlanePrimitiveBindings.Destroy(native).ThrowIfError();
-            native = IntPtr.Zero;
-        }
+        protected override VAResult DestroyNative(IntPtr native) => PlanePrimitiveBindings.Destroy(native);
 
         protected override string DebugInfo => $"material={material}, width={width}, height={height}";
     }
