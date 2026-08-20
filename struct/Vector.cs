@@ -30,5 +30,8 @@ namespace vaudionativewrapper
     
         /// <summary>The Z component</summary>
         public float Z;
+
+        /// <inheritdoc/>
+        public override string ToString() => $"({X:F3}, {Y:F4}, {Z:F4})";
     }
 }
