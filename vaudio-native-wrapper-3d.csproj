@@ -5,10 +5,10 @@
         <Platforms>AnyCPU;x64</Platforms>
         <Configurations>Debug;Release;Production</Configurations>
 
-        <Version>1.7.1</Version>
-        <AssemblyVersion>1.7.1</AssemblyVersion>
-        <FileVersion>1.7.1</FileVersion>
-        <InformationalVersion>1.7.1</InformationalVersion>
+        <Version>1.8.0</Version>
+        <AssemblyVersion>1.8.0</AssemblyVersion>
+        <FileVersion>1.8.0</FileVersion>
+        <InformationalVersion>1.8.0</InformationalVersion>
     </PropertyGroup>
 
     <!-- common is a shared source folder, not a referenced assembly, used by both this project and vaudio-native-wrapper-2d -->
