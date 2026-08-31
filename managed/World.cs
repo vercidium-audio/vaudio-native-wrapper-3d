@@ -17,7 +17,7 @@
             set => WorldBindings.SetCameraYaw(native, value).ThrowIfError();
         }
 
-        /// <summary>The field of view (in radians) of the camera in the debug window (dev build only)</summary>
+        /// <summary>The vertical field of view (in radians) of the camera in the debug window (dev build only)</summary>
         public float FieldOfView
         {
             get => WorldBindings.GetFieldOfView(native);
