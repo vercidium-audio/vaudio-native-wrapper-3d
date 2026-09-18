@@ -11,7 +11,7 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Dimensions of the prism along each axis</summary>
+        /// <summary>Size of the prism</summary>
         public Vector size
         {
             get => PrismPrimitiveBindings.GetSize(native);

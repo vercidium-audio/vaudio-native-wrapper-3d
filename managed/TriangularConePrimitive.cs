@@ -18,7 +18,7 @@ namespace vaudionativewrapper.managed
             set => TriangularConePrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        /// <summary>The height of the cone from the base to the apex</summary>
+        /// <summary>The height of the cone</summary>
         public float height
         {
             get => TriangularConePrimitiveBindings.GetHeight(native);

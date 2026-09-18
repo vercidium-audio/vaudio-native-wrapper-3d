@@ -25,7 +25,7 @@ namespace vaudionativewrapper.managed
             set => RectangularConePrimitiveBindings.SetLength(native, value).ThrowIfError();
         }
 
-        /// <summary>Height of the cone from the base to the apex</summary>
+        /// <summary>Height of the cone</summary>
         public float height
         {
             get => RectangularConePrimitiveBindings.GetHeight(native);
