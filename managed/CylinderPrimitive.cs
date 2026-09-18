@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A cylindrical audio primitive</summary>
+    /// <summary>A cylinder primitive</summary>
     public unsafe class CylinderPrimitive : Primitive
     {
         public CylinderPrimitive()
@@ -18,7 +18,7 @@ namespace vaudionativewrapper.managed
             set => CylinderPrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        /// <summary>Length of the cylinder along its axis</summary>
+        /// <summary>Length of the cylinder body</summary>
         public float length
         {
             get => CylinderPrimitiveBindings.GetLength(native);

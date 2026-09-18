@@ -12,21 +12,21 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>First vertex of the triangle</summary>
+        /// <summary>First vertex of the triangle in world space</summary>
         public Vector position0
         {
             get => TrianglePrimitiveBindings.GetPosition0(native);
             set => TrianglePrimitiveBindings.SetPosition0(native, value).ThrowIfError();
         }
 
-        /// <summary>Second vertex of the triangle</summary>
+        /// <summary>Second vertex of the triangle in world space</summary>
         public Vector position1
         {
             get => TrianglePrimitiveBindings.GetPosition1(native);
             set => TrianglePrimitiveBindings.SetPosition1(native, value).ThrowIfError();
         }
 
-        /// <summary>Third vertex of the triangle</summary>
+        /// <summary>Third vertex of the triangle in world space</summary>
         public Vector position2
         {
             get => TrianglePrimitiveBindings.GetPosition2(native);

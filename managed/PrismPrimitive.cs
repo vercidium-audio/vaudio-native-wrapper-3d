@@ -2,7 +2,7 @@
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A rectangular prism (box) audio primitive</summary>
+    /// <summary>A rectangular prism primitive</summary>
     public unsafe class PrismPrimitive : Primitive
     {
         public PrismPrimitive()

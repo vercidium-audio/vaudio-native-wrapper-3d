@@ -2,7 +2,7 @@
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A circular cone audio primitive</summary>
+    /// <summary>A cone primitive with a circular base</summary>
     public unsafe class ConePrimitive : Primitive
     {
         public ConePrimitive()
@@ -18,7 +18,7 @@ namespace vaudionativewrapper.managed
             set => ConePrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        /// <summary>Height of the cone from base to apex</summary>
+        /// <summary>Height of the cone from the base to the apex</summary>
         public float height
         {
             get => ConePrimitiveBindings.GetHeight(native);

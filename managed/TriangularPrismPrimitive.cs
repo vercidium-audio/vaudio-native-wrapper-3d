@@ -11,14 +11,14 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Circumradius of the triangular cross-section</summary>
+        /// <summary>Radius of the triangle face</summary>
         public float radius
         {
             get => TriangularPrismPrimitiveBindings.GetRadius(native);
             set => TriangularPrismPrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        /// <summary>Length of the prism along its axis</summary>
+        /// <summary>Length of the prism along its body</summary>
         public float length
         {
             get => TriangularPrismPrimitiveBindings.GetLength(native);

@@ -2,7 +2,7 @@
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A spherical audio primitive</summary>
+    /// <summary>A sphere primitive</summary>
     public class SpherePrimitive : Primitive
     {
         public SpherePrimitive()

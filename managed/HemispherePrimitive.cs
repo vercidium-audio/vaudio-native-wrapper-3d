@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A hemispherical audio primitive</summary>
+    /// <summary>A hemisphere primitive</summary>
     public unsafe class HemispherePrimitive : Primitive
     {
         public HemispherePrimitive()

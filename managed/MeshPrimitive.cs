@@ -52,7 +52,7 @@ namespace vaudionativewrapper.managed
             set => MeshPrimitiveBindings.SetTransform(native, ref value).ThrowIfError();
         }
 
-        /// <summary>Whether rays lose a flat percentage of energy (FlatTransmissionLF and FlatTransmissionHF) the moment they touch this primitive, instead of calculating how long the ray spent inside it. Defaults to false (depth-based transmission using TransmissionLF and TransmissionHF). Zero-thickness primitives (e.g. DiskPrimitive, PlanePrimitive, TrianglePrimitive, LinePrimitive) have no meaningful interior to travel through, so they force this to true and throw if set to false.</summary>
+        /// <summary>Whether rays lose a flat percentage of energy the moment they touch this primitive, instead of calculating how long the ray spent inside it Flat primitives (e.g. Disk, Plane, Triangle, Line) force this to true and throw if set to false.</summary>
         public bool UseFlatTransmission
         {
             get => MeshPrimitiveBindings.GetUseFlatTransmission(native);

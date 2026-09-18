@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A rectangular cone audio primitive</summary>
+    /// <summary>A cone primitive with a rectangular base</summary>
     public unsafe class RectangularConePrimitive : Primitive
     {
         public RectangularConePrimitive()
@@ -25,7 +25,7 @@ namespace vaudionativewrapper.managed
             set => RectangularConePrimitiveBindings.SetLength(native, value).ThrowIfError();
         }
 
-        /// <summary>Height of the cone from base to apex</summary>
+        /// <summary>Height of the cone from the base to the apex</summary>
         public float height
         {
             get => RectangularConePrimitiveBindings.GetHeight(native);

@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A cone primitive with a triangular cross-section</summary>
+    /// <summary>A cone primitive with a triangular base</summary>
     public unsafe class TriangularConePrimitive : Primitive
     {
         public TriangularConePrimitive()
@@ -18,7 +18,7 @@ namespace vaudionativewrapper.managed
             set => TriangularConePrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        /// <summary>The height of the cone</summary>
+        /// <summary>The height of the cone from the base to the apex</summary>
         public float height
         {
             get => TriangularConePrimitiveBindings.GetHeight(native);

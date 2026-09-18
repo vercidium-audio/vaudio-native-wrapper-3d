@@ -18,7 +18,7 @@ namespace vaudionativewrapper.managed
             set => CapsulePrimitiveBindings.SetRadius(native, value).ThrowIfError();
         }
 
-        /// <summary>Length of the cylindrical body between the hemispherical caps</summary>
+        /// <summary>Length of the body between the spherical caps</summary>
         public float length
         {
             get => CapsulePrimitiveBindings.GetLength(native);
