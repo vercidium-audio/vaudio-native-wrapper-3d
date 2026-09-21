@@ -2,7 +2,7 @@
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A spherical audio primitive</summary>
+    /// <summary>A sphere primitive</summary>
     public class SpherePrimitive : Primitive
     {
         public SpherePrimitive()
@@ -11,7 +11,7 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Center position of the sphere in world space</summary>
+        /// <summary>Center of the sphere in world space</summary>
         public Vector center
         {
             get => SpherePrimitiveBindings.GetCenter(native);

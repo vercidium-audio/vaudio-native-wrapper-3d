@@ -2,7 +2,7 @@
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A rectangular prism (box) audio primitive</summary>
+    /// <summary>A rectangular prism primitive</summary>
     public unsafe class PrismPrimitive : Primitive
     {
         public PrismPrimitive()
@@ -11,7 +11,7 @@ namespace vaudionativewrapper.managed
             owns = true;
         }
 
-        /// <summary>Dimensions of the prism along each axis</summary>
+        /// <summary>Size of the prism</summary>
         public Vector size
         {
             get => PrismPrimitiveBindings.GetSize(native);

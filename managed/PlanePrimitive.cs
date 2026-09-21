@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A flat plane audio primitive</summary>
+    /// <summary>A flat rectangular plane primitive</summary>
     public unsafe class PlanePrimitive : Primitive
     {
         /// <summary>Create a plane primitive</summary>

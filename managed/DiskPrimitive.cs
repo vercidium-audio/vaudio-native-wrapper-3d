@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A circular disk audio primitive</summary>
+    /// <summary>A flat disk primitive</summary>
     public unsafe class DiskPrimitive : Primitive
     {
         /// <summary>Create a disk primitive</summary>

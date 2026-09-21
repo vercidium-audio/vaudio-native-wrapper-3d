@@ -2,7 +2,7 @@ using System;
 
 namespace vaudionativewrapper.managed
 {
-    /// <summary>A cone primitive with a triangular cross-section</summary>
+    /// <summary>A cone primitive with a triangular base</summary>
     public unsafe class TriangularConePrimitive : Primitive
     {
         public TriangularConePrimitive()
