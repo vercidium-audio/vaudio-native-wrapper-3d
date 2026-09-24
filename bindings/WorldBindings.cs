@@ -22,5 +22,11 @@ namespace vaudionativewrapper
 
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldCalculateListenerRelativePan")]
         public static extern Vector CalculateListenerRelativePan(IntPtr ctx, Vector worldVector, float listenerPitch, float listenerYaw);
+
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldConvertWorldToListenerDirection")]
+        public static extern Vector ConvertWorldToListenerDirection(IntPtr ctx, Vector worldDirection, float listenerPitch, float listenerYaw);
+
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldConvertListenerToWorldDirection")]
+        public static extern Vector ConvertListenerToWorldDirection(IntPtr ctx, Vector listenerDirection, float listenerPitch, float listenerYaw);
     }
 }
