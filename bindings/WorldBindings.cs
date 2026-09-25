@@ -3,8 +3,24 @@ using System.Runtime.InteropServices;
 
 namespace vaudionativewrapper
 {
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate MaterialType UnsafeVoxelMaterialCallback(void* voxel, IntPtr userData);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    [return: MarshalAs(UnmanagedType.U1)]
+    public unsafe delegate bool UnsafeVoxelIsSolidCallback(void* voxel, IntPtr userData);
+
     public static partial class WorldBindings
     {
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldSetUnsafeVoxelMaterialCallbacks")]
+        public static extern VAResult SetUnsafeVoxelMaterialCallbacks(IntPtr world, IntPtr getMaterial, IntPtr isSolid, IntPtr userData);
+
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldGetUnsafeVoxelMaterialCallback")]
+        public static extern IntPtr GetUnsafeVoxelMaterialCallback(IntPtr world);
+
+        [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldGetUnsafeVoxelIsSolidCallback")]
+        public static extern IntPtr GetUnsafeVoxelIsSolidCallback(IntPtr world);
+
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldGetCameraPitch")]
         public static extern float GetCameraPitch(IntPtr world);
         [DllImport(Constants.DLL_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "vaWorldSetCameraPitch")]
