@@ -6,7 +6,7 @@ namespace vaudionativewrapper.managed
     /// <summary>A triangulated mesh that is built once and can be shared across multiple MeshPrimitive instances</summary>
     public unsafe class Mesh
     {
-        internal IntPtr native;
+        public IntPtr native;
 
         /// <summary>Create a mesh from an array of vertices</summary>
         public Mesh(Vector[] vertices, Vector minBounds, Vector maxBounds)
@@ -31,10 +31,17 @@ namespace vaudionativewrapper.managed
             native = outMesh;
         }
 
+        /// <summary>Destroys the native mesh. If a world's background threads may still be using it, it is freed automatically once they have finished. Returns <see cref="VAResult.ErrorInUse"/> if a MeshPrimitive using this mesh has not been destroyed yet, in which case Destroy can be called again later</summary>
         public VAResult Destroy()
         {
+            if (native == IntPtr.Zero)
+                return VAResult.Success;
+
             var result = MeshBindings.Destroy(native);
-            native = IntPtr.Zero;
+
+            if (result == VAResult.Success)
+                native = IntPtr.Zero;
+
             return result;
         }
 
